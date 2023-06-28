@@ -18,6 +18,8 @@
         }
     }
     Console.WriteLine();
+    Console.WriteLine("You entered: " + inputNumberOfRows);
+
     Console.WriteLine("Chessboard where 1 represents white square and 0 represents black square:");
     for (int i = 0; i < inputNumberOfRows; i++)
     {

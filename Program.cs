@@ -1,10 +1,28 @@
-﻿using Assignment;
+﻿using ChessBoardAssigment;
 
 class Program
 {
     static void Main()
     {
+        bool tryCodeAgain = true;
         ChessBoardDialog ChessBoardDialog = new();
-        ChessBoardDialog.GameStart();
+        ChessBoard ChessBoard = new();
+
+        while (tryCodeAgain)
+        {
+            ChessBoardDialog.DialogStartMessage();
+
+            int inputNumberOfRows = ChessBoardDialog.ReturnInputValue();
+
+            ChessBoard.GenerateChessBoardOneLoop(inputNumberOfRows);
+            if (ChessBoardDialog.TryAgain())
+            {
+                tryCodeAgain = true;
+            }
+            else
+            {
+                tryCodeAgain = false;
+            }
+        }
     }
 }

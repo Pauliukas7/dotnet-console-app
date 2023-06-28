@@ -15,14 +15,7 @@ class Program
             int inputNumberOfRows = ChessBoardDialog.ReturnInputValue();
 
             ChessBoard.GenerateChessBoardOneLoop(inputNumberOfRows);
-            if (ChessBoardDialog.TryAgain())
-            {
-                tryCodeAgain = true;
-            }
-            else
-            {
-                tryCodeAgain = false;
-            }
+            tryCodeAgain = ChessBoardDialog.TryAgain();
         }
     }
 }

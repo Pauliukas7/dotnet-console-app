@@ -6,7 +6,7 @@ class Program
     {
         bool tryCodeAgain = true;
         ChessBoardDialog ChessBoardDialog = new();
-        ChessBoard ChessBoard = new();
+        ;
 
         while (tryCodeAgain)
         {
@@ -14,7 +14,10 @@ class Program
 
             int inputNumberOfRows = ChessBoardDialog.ReturnInputValue();
 
+            ChessBoardDialog.ChessBoardMessage();
+
             ChessBoard.GenerateChessBoardOneLoop(inputNumberOfRows);
+
             tryCodeAgain = ChessBoardDialog.TryAgain();
         }
     }

@@ -2,13 +2,8 @@ namespace ChessBoardAssigment
 {
     public class ChessBoard
     {
-        public ChessBoard() { }
-
-        public void GenerateChessBoardOneLoop(int numberOfRows)
+        public static void GenerateChessBoardOneLoop(int numberOfRows)
         {
-            Console.WriteLine(
-                "Chessboard where 1 represents white square and 0 represents black square:"
-            );
             int column = 0;
             for (int i = 1; i <= numberOfRows * numberOfRows; i++)
             {
@@ -22,11 +17,8 @@ namespace ChessBoardAssigment
             }
         }
 
-        public void GenerateChessBoardTwoLoops(int numberOfRows)
+        public static void GenerateChessBoardTwoLoops(int numberOfRows)
         {
-            Console.WriteLine(
-                "Chessboard where 1 represents white square and 0 represents black square:"
-            );
             for (int i = 0; i < numberOfRows; i++)
             {
                 for (int j = 0; j < numberOfRows; j++)

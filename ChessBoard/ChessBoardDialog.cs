@@ -4,9 +4,9 @@ namespace ChessBoardAssigment
     {
         public ChessBoardDialog() { }
 
-        private int _inputNumberOfRows = 0;
+        private static int _inputNumberOfRows = 0;
 
-        public void DialogStartMessage()
+        public static void DialogStartMessage()
         {
             bool validInput = false;
 
@@ -27,7 +27,7 @@ namespace ChessBoardAssigment
             Console.WriteLine("You entered: " + _inputNumberOfRows);
         }
 
-        public bool TryAgain()
+        public static bool TryAgain()
         {
             Console.WriteLine();
             Console.WriteLine("Try code again?");
@@ -35,15 +35,15 @@ namespace ChessBoardAssigment
             Console.WriteLine("any key - close application");
 
             ConsoleKeyInfo tryAgainInput = Console.ReadKey(intercept: true);
-            return tryAgainInput.KeyChar == '1' ? true : false;
+            return tryAgainInput.KeyChar == '1';
         }
 
-        public int ReturnInputValue()
+        public static int ReturnInputValue()
         {
             return _inputNumberOfRows;
         }
 
-        public void ChessBoardMessage()
+        public static void ChessBoardMessage()
         {
             Console.WriteLine(
                 "Chessboard where 1 represents white square and 0 represents black square:"

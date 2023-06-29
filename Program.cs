@@ -4,9 +4,7 @@ class Program
 {
     static void Main()
     {
-        bool tryCodeAgain = true;
-        ChessBoardDialog ChessBoardDialog = new();
-        ;
+        var tryCodeAgain = true;
 
         while (tryCodeAgain)
         {

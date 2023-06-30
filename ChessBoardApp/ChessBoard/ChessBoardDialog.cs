@@ -42,6 +42,7 @@ namespace ChessBoardApp.ChessBoard
             Console.WriteLine("any key - close application");
 
             ConsoleKeyInfo tryAgainInput = Console.ReadKey(intercept: true);
+
             return tryAgainInput.KeyChar == '1';
         }
 

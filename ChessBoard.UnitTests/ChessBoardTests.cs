@@ -1,8 +1,30 @@
 using System.Text;
 using Microsoft.Extensions.Logging;
+using Moq;
 
 namespace ChessBoardApp.ChessBoard.Tests
 {
+    class TestLogger<T> : ILogger<T>
+    {
+        public List<string> LoggedMessages { get; } = new();
+
+        public IDisposable BeginScope<TState>(TState state) => null;
+
+        public bool IsEnabled(LogLevel logLevel) => true;
+
+        public void Log<TState>(
+            LogLevel logLevel,
+            EventId eventId,
+            TState state,
+            Exception exception,
+            Func<TState, Exception, string> formatter
+        )
+        {
+            string logMessage = formatter(state, exception);
+            LoggedMessages.Add(logMessage);
+        }
+    }
+
     public class ChessBoardGeneratorTests
     {
         [Fact]
@@ -22,27 +44,6 @@ namespace ChessBoardApp.ChessBoard.Tests
             Assert.Contains(expectedChessBoard, string.Join("\r\n", logger.LoggedMessages));
         }
 
-        private class TestLogger<T> : ILogger<T>
-        {
-            public List<string> LoggedMessages { get; } = new();
-
-            public IDisposable BeginScope<TState>(TState state) => null;
-
-            public bool IsEnabled(LogLevel logLevel) => true;
-
-            public void Log<TState>(
-                LogLevel logLevel,
-                EventId eventId,
-                TState state,
-                Exception exception,
-                Func<TState, Exception, string> formatter
-            )
-            {
-                string logMessage = formatter(state, exception);
-                LoggedMessages.Add(logMessage);
-            }
-        }
-
         private static string GetExpectedChessBoard(int width, int length)
         {
             StringBuilder chessBoard = new();
@@ -50,7 +51,7 @@ namespace ChessBoardApp.ChessBoard.Tests
             {
                 for (int j = 0; j < width; j++)
                 {
-                    chessBoard.Append((j + i) % 2 == 0 ? "1" : "0");
+                    chessBoard.Append((j + i) % 2 == 0 ? "2" : "0");
                 }
 
                 chessBoard.AppendLine();
@@ -63,16 +64,19 @@ namespace ChessBoardApp.ChessBoard.Tests
     public class ChessBoardDialogTests
     {
         [Fact]
-        public void TryAgain_ShouldReturnTrue_WhenUserPresses1()
+        public void ChessBoardMessage_ShouldWriteExpectedMessage()
         {
             // Arrange
-            var consoleKeyInfo = new ConsoleKeyInfo('1', ConsoleKey.D1, false, false, false);
+            var logger = new TestLogger<ChessBoardDialog>();
+            var chessBoardDialog = new ChessBoardDialog(logger);
 
             // Act
-            var result = ChessBoardDialog.TryAgain();
+            chessBoardDialog.InvalidNumberInput();
 
+            string expectedLoggedMessage = "Invalid number input occurredd";
             // Assert
-            Assert.True(result);
+
+            Assert.Contains(expectedLoggedMessage, string.Join("\r\n", logger.LoggedMessages));
         }
     }
 }

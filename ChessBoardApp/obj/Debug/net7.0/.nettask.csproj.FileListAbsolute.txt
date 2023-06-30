@@ -1,0 +1,15 @@
+C:\Users\p.lazdauskas\OneDrive - Adform\Desktop\clonegit\C#\dotnet-console-app\ChessBoardApp\bin\Debug\net7.0\.nettask.exe
+C:\Users\p.lazdauskas\OneDrive - Adform\Desktop\clonegit\C#\dotnet-console-app\ChessBoardApp\bin\Debug\net7.0\.nettask.deps.json
+C:\Users\p.lazdauskas\OneDrive - Adform\Desktop\clonegit\C#\dotnet-console-app\ChessBoardApp\bin\Debug\net7.0\.nettask.runtimeconfig.json
+C:\Users\p.lazdauskas\OneDrive - Adform\Desktop\clonegit\C#\dotnet-console-app\ChessBoardApp\bin\Debug\net7.0\.nettask.dll
+C:\Users\p.lazdauskas\OneDrive - Adform\Desktop\clonegit\C#\dotnet-console-app\ChessBoardApp\bin\Debug\net7.0\.nettask.pdb
+C:\Users\p.lazdauskas\OneDrive - Adform\Desktop\clonegit\C#\dotnet-console-app\ChessBoardApp\obj\Debug\net7.0\.nettask.csproj.AssemblyReference.cache
+C:\Users\p.lazdauskas\OneDrive - Adform\Desktop\clonegit\C#\dotnet-console-app\ChessBoardApp\obj\Debug\net7.0\.nettask.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\p.lazdauskas\OneDrive - Adform\Desktop\clonegit\C#\dotnet-console-app\ChessBoardApp\obj\Debug\net7.0\.nettask.AssemblyInfoInputs.cache
+C:\Users\p.lazdauskas\OneDrive - Adform\Desktop\clonegit\C#\dotnet-console-app\ChessBoardApp\obj\Debug\net7.0\.nettask.AssemblyInfo.cs
+C:\Users\p.lazdauskas\OneDrive - Adform\Desktop\clonegit\C#\dotnet-console-app\ChessBoardApp\obj\Debug\net7.0\.nettask.csproj.CoreCompileInputs.cache
+C:\Users\p.lazdauskas\OneDrive - Adform\Desktop\clonegit\C#\dotnet-console-app\ChessBoardApp\obj\Debug\net7.0\.nettask.dll
+C:\Users\p.lazdauskas\OneDrive - Adform\Desktop\clonegit\C#\dotnet-console-app\ChessBoardApp\obj\Debug\net7.0\refint\.nettask.dll
+C:\Users\p.lazdauskas\OneDrive - Adform\Desktop\clonegit\C#\dotnet-console-app\ChessBoardApp\obj\Debug\net7.0\.nettask.pdb
+C:\Users\p.lazdauskas\OneDrive - Adform\Desktop\clonegit\C#\dotnet-console-app\ChessBoardApp\obj\Debug\net7.0\.nettask.genruntimeconfig.cache
+C:\Users\p.lazdauskas\OneDrive - Adform\Desktop\clonegit\C#\dotnet-console-app\ChessBoardApp\obj\Debug\net7.0\ref\.nettask.dll

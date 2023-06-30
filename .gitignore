@@ -1,8 +1,6 @@
-# .NET Core / .NET 5+ Console App
-
 # Build artifacts
-/bin/
-/obj/
+**/bin/
+**/obj/
 
 # .NET Core / .NET 5+ specific files
 *.dll

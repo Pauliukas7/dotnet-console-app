@@ -76,7 +76,7 @@ namespace ChessBoardApp.ChessBoard.Tests
             string expectedLoggedMessage = "Invalid number input occurredd";
             // Assert
 
-            Assert.Contains(expectedLoggedMessage, string.Join("\r\n", logger.LoggedMessages));
+            Assert.Equal(expectedLoggedMessage, string.Join("\r\n", logger.LoggedMessages));
         }
     }
 }

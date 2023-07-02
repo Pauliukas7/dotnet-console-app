@@ -53,7 +53,6 @@ namespace ChessBoardApp.ChessBoard
 
                 chessBoard.AppendLine();
             }
-
             _logger.LogInformation(chessBoard.ToString());
         }
     }

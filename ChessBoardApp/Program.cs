@@ -5,10 +5,11 @@ class Program
 {
     static void Main()
     {
-        ILoggerFactory loggerFactory = LoggerFactory.Create(builder =>
+        var loggerFactory = LoggerFactory.Create(builder =>
         {
             builder.AddConsole();
         });
+
         var loggerChessBoardGenerator = loggerFactory.CreateLogger<ChessBoardGenerator>();
         var loggerChessBoardDialog = loggerFactory.CreateLogger<ChessBoardDialog>();
 

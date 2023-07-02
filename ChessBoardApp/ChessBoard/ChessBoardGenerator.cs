@@ -41,6 +41,7 @@ namespace ChessBoardApp.ChessBoard
 
         public void GenerateRectangeBoard(int width, int length)
         {
+            int x = 1;
             StringBuilder chessBoard = new StringBuilder();
             for (int i = 0; i < length; i++)
             {
@@ -50,6 +51,7 @@ namespace ChessBoardApp.ChessBoard
                     chessBoard.Append((j + i) % 2 == 0 ? "1" : "0");
                 }
                 Console.WriteLine();
+
                 chessBoard.AppendLine();
             }
 

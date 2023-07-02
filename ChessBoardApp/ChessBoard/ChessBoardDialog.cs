@@ -16,22 +16,19 @@ namespace ChessBoardApp.ChessBoard
             Console.Write(
                 "Please enter a number. This will be the number of rows on your chess board: "
             );
-            string input = Console.ReadLine();
-            return input;
+            return Console.ReadLine();
         }
 
         public static string RectangleWidth()
         {
             Console.Write("Please enter rectangle width: ");
-            string inputWidth = Console.ReadLine();
-            return inputWidth;
+            return Console.ReadLine();
         }
 
         public static string RectangleLength()
         {
             Console.Write("Please enter rectangle length: ");
-            string inputLength = Console.ReadLine();
-            return inputLength;
+            return Console.ReadLine();
         }
 
         public static bool TryAgain()

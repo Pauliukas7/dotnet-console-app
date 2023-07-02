@@ -9,10 +9,8 @@ class Program
         {
             builder.AddConsole();
         });
-        ILogger<ChessBoardGenerator> loggerChessBoardGenerator =
-            loggerFactory.CreateLogger<ChessBoardGenerator>();
-        ILogger<ChessBoardDialog> loggerChessBoardDialog =
-            loggerFactory.CreateLogger<ChessBoardDialog>();
+        var loggerChessBoardGenerator = loggerFactory.CreateLogger<ChessBoardGenerator>();
+        var loggerChessBoardDialog = loggerFactory.CreateLogger<ChessBoardDialog>();
 
         var tryCodeAgain = true;
 

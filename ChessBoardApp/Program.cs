@@ -13,40 +13,24 @@ class Program
         var loggerChessBoardGenerator = loggerFactory.CreateLogger<ChessBoardGenerator>();
         var loggerChessBoardDialog = loggerFactory.CreateLogger<ChessBoardDialog>();
 
-        var tryCodeAgain = true;
-
         string widthInput;
         string lengthInput;
 
         int width;
         int length;
 
-        while (tryCodeAgain)
-        {
-            var chessBoardGenerator = new ChessBoardGenerator(loggerChessBoardGenerator);
-            var chessBoardDialog = new ChessBoardDialog(loggerChessBoardDialog);
+        var chessBoardGenerator = new ChessBoardGenerator(loggerChessBoardGenerator);
+        var chessBoardDialog = new ChessBoardDialog(loggerChessBoardDialog);
 
-            widthInput = ChessBoardDialog.RectangleWidth();
-            while (!InputValidation.ValidRectangleWidth(widthInput))
-            {
-                chessBoardDialog.InvalidNumberInput();
-                widthInput = ChessBoardDialog.RectangleWidth();
-            }
-            width = int.Parse(widthInput);
+        widthInput = ChessBoardDialog.RectangleWidth();
+        width = int.Parse(widthInput);
 
-            lengthInput = ChessBoardDialog.RectangleLength();
-            while (!InputValidation.ValidRectangleLength(lengthInput))
-            {
-                chessBoardDialog.InvalidNumberInput();
-                lengthInput = ChessBoardDialog.RectangleWidth();
-            }
-            length = int.Parse(lengthInput);
+        lengthInput = ChessBoardDialog.RectangleLength();
 
-            ChessBoardDialog.RectangleMessage(width, length);
+        length = int.Parse(lengthInput);
 
-            chessBoardGenerator.GenerateRectangeBoard(width, length);
+        ChessBoardDialog.RectangleMessage(width, length);
 
-            tryCodeAgain = ChessBoardDialog.TryAgain();
-        }
+        chessBoardGenerator.GenerateRectangeBoard(width, length);
     }
 }

@@ -20,7 +20,7 @@ appsettings.Development.json
 
 # Visual Studio files
 .vscode/
-*.sln
+
 *.suo
 *.csproj.user
 *.user
@@ -38,7 +38,7 @@ appsettings.Development.json
 
 # Rider files
 .idea/
-*.sln.iml
+
 *.ipr
 *.iws
 

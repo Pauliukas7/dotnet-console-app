@@ -39,7 +39,7 @@ namespace ChessBoardApp.ChessBoard
             }
         }
 
-        public void GenerateRectangeBoard(int width, int length)
+        public string GenerateRectangeBoard(int width, int length)
         {
             StringBuilder chessBoard = new StringBuilder();
             for (int i = 0; i < length; i++)
@@ -54,6 +54,7 @@ namespace ChessBoardApp.ChessBoard
                 chessBoard.AppendLine();
             }
             _logger.LogInformation(chessBoard.ToString());
+            return chessBoard.ToString();
         }
     }
 }

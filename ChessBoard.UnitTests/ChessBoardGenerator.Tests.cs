@@ -1,5 +1,6 @@
-﻿using System.Text;
-using Microsoft.Extensions.Logging;
+﻿using Moq;
+using Serilog;
+
 
 
 namespace ChessBoardApp.ChessBoard.Tests
@@ -8,37 +9,30 @@ namespace ChessBoardApp.ChessBoard.Tests
 
     public class ChessBoardGeneratorTests
     {
-        
-        public void GenerateRectangleBoard_ShouldLogCorrectChessBoard()
+
+        [Theory]
+        [InlineData("1\r\n",1,1)]
+        [InlineData("101\r\n010\r\n101\r\n010\r\n", 3,4)]
+        [InlineData("1010\r\n0101\r\n1010\r\n0101\r\n", 4,4)]
+        [InlineData("1010\r\n0101\r\n1010\r\n0101\r\n1010\r\n0101\r\n", 4,6)]
+        public void GenerateRectangleBoard_ShouldReturnCorrectChessBoard(string expected, int width, int length)
         {
             // Arrange
-            var chessBoardGenerator = new ChessBoardGenerator();
-            int width = 4;
-            int length = 6;
+            var loggerMock = new Mock<ILogger>();
+            var chessBoardGenerator = new ChessBoardGenerator(loggerMock.Object);
+
 
             // Act
-            chessBoardGenerator.GenerateRectangeBoard(width, length);
+           var result = chessBoardGenerator.GenerateRectangeBoard(width, length);
 
             // Assert
-            string expectedChessBoard = GetExpectedChessBoard(width, length);
-            Assert.Contains(expectedChessBoard, string.Join("\r\n", logger.LoggedMessages));
+            
+            Assert.Contains(expected, result);
         }
 
-        private static string GetExpectedChessBoard(int width, int length)
-        {
-            StringBuilder chessBoard = new();
-            for (int i = 0; i < length; i++)
-            {
-                for (int j = 0; j < width; j++)
-                {
-                    chessBoard.Append((j + i) % 2 == 0 ? "2" : "0");
-                }
+       
 
-                chessBoard.AppendLine();
-            }
 
-            return chessBoard.ToString();
-        }
     }
 
 }

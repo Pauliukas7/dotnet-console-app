@@ -1,12 +1,21 @@
 using System.Text;
+using Serilog;
 
 
 namespace ChessBoardApp.ChessBoard
 {
     public class ChessBoardGenerator
     {
+        private readonly ILogger _logger;
+
+        public ChessBoardGenerator(ILogger logger)
+        {
+            _logger = logger;
+        }
+
         public void GenerateChessBoardOneLoop(int numberOfRows)
         {
+            
             int column = 0;
             for (int i = 1; i <= numberOfRows * numberOfRows; i++)
             {
@@ -47,6 +56,7 @@ namespace ChessBoardApp.ChessBoard
                 chessBoard.AppendLine();
             }
 
+            _logger.Information("Generated Board:" +Environment.NewLine + chessBoard.ToString());
             return chessBoard.ToString();
         }
     }

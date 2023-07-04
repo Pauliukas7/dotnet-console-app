@@ -1,30 +1,36 @@
 ﻿using ChessBoardApp.ChessBoard;
-using Microsoft.Extensions.Logging;
+using Serilog;
 
 class Program
 {
    public static void Main()
-    {
-       
+   {
 
-      
-        var chessBoardGenerator = new ChessBoardGenerator();
+       var logger = new LoggerConfiguration()
+           .WriteTo.File("../../../logs.txt")
+           .CreateLogger();
+
+        var chessBoardGenerator = new ChessBoardGenerator(logger);
+        var inputValidation = new InputValidation(logger);
 
         var widthInput = ChessBoardDialog.EnterRectangleWidth();
-        var widthInputValidation = new InputValidation(widthInput);
-        if (!widthInputValidation.IsValid)
+
+       var widthValidationResult = inputValidation.ValidateInput(widthInput);
+        if (!widthValidationResult.IsValid)
         {
-            Console.WriteLine(widthInputValidation.ErrorMessage);
+            Console.WriteLine(widthValidationResult.ErrorMessage);
             return;
         }
 
         var width = int.Parse(widthInput);
 
         var lengthInput = ChessBoardDialog.EnterRectangleLength();
-        var lengthInputValidation = new InputValidation(lengthInput);
-        if (!lengthInputValidation.IsValid)
+
+       var lengthValidationResult = inputValidation.ValidateInput(lengthInput);
+
+        if (!lengthValidationResult.IsValid)
         {
-            Console.WriteLine(lengthInputValidation.ErrorMessage);
+            Console.WriteLine(lengthValidationResult.ErrorMessage);
             return;
         }
         var length = int.Parse(lengthInput);

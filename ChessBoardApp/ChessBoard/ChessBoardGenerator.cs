@@ -1,17 +1,10 @@
 using System.Text;
-using Microsoft.Extensions.Logging;
+
 
 namespace ChessBoardApp.ChessBoard
 {
     public class ChessBoardGenerator
     {
-        private readonly ILogger _logger;
-
-        public ChessBoardGenerator(ILogger<ChessBoardGenerator> logger)
-        {
-            _logger = logger;
-        }
-
         public void GenerateChessBoardOneLoop(int numberOfRows)
         {
             int column = 0;
@@ -46,14 +39,14 @@ namespace ChessBoardApp.ChessBoard
             {
                 for (int j = 0; j < width; j++)
                 {
-                    Console.Write((j + i) % 2 == 0 ? "1" : "0");
+
                     chessBoard.Append((j + i) % 2 == 0 ? "1" : "0");
                 }
-                Console.WriteLine();
+
 
                 chessBoard.AppendLine();
             }
-            _logger.LogInformation(chessBoard.ToString());
+
             return chessBoard.ToString();
         }
     }

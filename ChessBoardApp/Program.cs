@@ -3,34 +3,38 @@ using Microsoft.Extensions.Logging;
 
 class Program
 {
-    static void Main()
+   public static void Main()
     {
-        var loggerFactory = LoggerFactory.Create(builder =>
+       
+
+      
+        var chessBoardGenerator = new ChessBoardGenerator();
+
+        var widthInput = ChessBoardDialog.EnterRectangleWidth();
+        var widthInputValidation = new InputValidation(widthInput);
+        if (!widthInputValidation.IsValid)
         {
-            builder.AddConsole();
-        });
+            Console.WriteLine(widthInputValidation.ErrorMessage);
+            return;
+        }
 
-        var loggerChessBoardGenerator = loggerFactory.CreateLogger<ChessBoardGenerator>();
-        var loggerChessBoardDialog = loggerFactory.CreateLogger<ChessBoardDialog>();
+        var width = int.Parse(widthInput);
 
-        string widthInput;
-        string lengthInput;
+        var lengthInput = ChessBoardDialog.EnterRectangleLength();
+        var lengthInputValidation = new InputValidation(lengthInput);
+        if (!lengthInputValidation.IsValid)
+        {
+            Console.WriteLine(lengthInputValidation.ErrorMessage);
+            return;
+        }
+        var length = int.Parse(lengthInput);
 
-        int width;
-        int length;
-
-        var chessBoardGenerator = new ChessBoardGenerator(loggerChessBoardGenerator);
-        var chessBoardDialog = new ChessBoardDialog(loggerChessBoardDialog);
-
-        widthInput = ChessBoardDialog.RectangleWidth();
-        width = int.Parse(widthInput);
-
-        lengthInput = ChessBoardDialog.RectangleLength();
-
-        length = int.Parse(lengthInput);
+        var generatedChessBoard = chessBoardGenerator.GenerateRectangeBoard(width, length);
 
         ChessBoardDialog.RectangleMessage(width, length);
+        Console.WriteLine(generatedChessBoard);
+        Console.ReadLine();
 
-        chessBoardGenerator.GenerateRectangeBoard(width, length);
+
     }
 }

@@ -2,45 +2,20 @@ using Microsoft.Extensions.Logging;
 
 namespace ChessBoardApp.ChessBoard
 {
+
     public class ChessBoardDialog
     {
-        private readonly ILogger<ChessBoardDialog> _logger;
 
-        public ChessBoardDialog(ILogger<ChessBoardDialog> logger)
-        {
-            _logger = logger;
-        }
-
-        public static string ChessBoardNumberOfRows()
-        {
-            Console.Write(
-                "Please enter a number. This will be the number of rows on your chess board: "
-            );
-            return Console.ReadLine();
-        }
-
-        public static string RectangleWidth()
+        public static string EnterRectangleWidth()
         {
             Console.Write("Please enter rectangle width: ");
             return Console.ReadLine();
         }
 
-        public static string RectangleLength()
+        public static string EnterRectangleLength()
         {
             Console.Write("Please enter rectangle length: ");
             return Console.ReadLine();
-        }
-
-        public static bool TryAgain()
-        {
-            // Console.WriteLine();
-            Console.WriteLine("Try code again?");
-            Console.WriteLine("1 - yes");
-            Console.WriteLine("any key - close application");
-
-            ConsoleKeyInfo tryAgainInput = Console.ReadKey(intercept: true);
-
-            return tryAgainInput.KeyChar == '1';
         }
 
         public static void ChessBoardMessage()
@@ -57,10 +32,6 @@ namespace ChessBoardApp.ChessBoard
             );
         }
 
-        public void InvalidNumberInput()
-        {
-            Console.WriteLine("Invalid input. Please provide a valid number");
-            _logger.LogError("Invalid number input occurred");
-        }
+
     }
 }

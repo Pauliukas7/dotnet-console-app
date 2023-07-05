@@ -1,6 +1,5 @@
-using System.Text;
 using Serilog;
-
+using System.Text;
 
 namespace ChessBoardApp.ChessBoard
 {
@@ -13,42 +12,50 @@ namespace ChessBoardApp.ChessBoard
             _logger = logger;
         }
 
-        public void GenerateChessBoardOneLoop(int numberOfRows)
+        public string GenerateChessBoardOneLoop(int numberOfRows)
         {
-            
+            var chessBoard = new StringBuilder();
             int column = 0;
             for (int i = 1; i <= numberOfRows * numberOfRows; i++)
             {
-                Console.Write((column + i) % 2 == 0 ? "0" : "1"); //
+                chessBoard.Append((column + i) % 2 == 0 ? "0" : "1"); //
                 if (i % numberOfRows == 0 && i != 0)
-                {
-                    Console.WriteLine();
-                    if (numberOfRows % 2 == 0)
-                        column++;
-                }
+                    if (i % numberOfRows == 0 && i != 0)
+                    {
+                        chessBoard.AppendLine();
+                        if (numberOfRows % 2 == 0)
+                            column++;
+                    }
             }
+
+            _logger.Information("Generated Board:" + Environment.NewLine + chessBoard.ToString());
+            return chessBoard.ToString();
         }
 
-        public static void GenerateChessBoardTwoLoops(int numberOfRows)
+        public string GenerateChessBoardTwoLoops(int numberOfRows)
         {
+            var chessBoard = new StringBuilder();
             for (int i = 0; i < numberOfRows; i++)
             {
                 for (int j = 0; j < numberOfRows; j++)
                 {
-                    Console.Write((j + i) % 2 == 0 ? "1" : "0");
+                    chessBoard.Append((j + i) % 2 == 0 ? "1" : "0");
                 }
-                Console.WriteLine();
+
+                chessBoard.AppendLine();
             }
+
+            _logger.Information("Generated Board:" + Environment.NewLine + chessBoard.ToString());
+            return chessBoard.ToString();
         }
 
-        public string GenerateRectangeBoard(int width, int length)
+        public string GenerateRectangleBoard(int width, int length)
         {
-            StringBuilder chessBoard = new StringBuilder();
+            var chessBoard = new StringBuilder();
             for (int i = 0; i < length; i++)
             {
                 for (int j = 0; j < width; j++)
                 {
-
                     chessBoard.Append((j + i) % 2 == 0 ? "1" : "0");
                 }
 
@@ -56,7 +63,7 @@ namespace ChessBoardApp.ChessBoard
                 chessBoard.AppendLine();
             }
 
-            _logger.Information("Generated Board:" +Environment.NewLine + chessBoard.ToString());
+            _logger.Information("Generated Board:" + Environment.NewLine + chessBoard.ToString());
             return chessBoard.ToString();
         }
     }

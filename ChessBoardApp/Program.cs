@@ -3,19 +3,18 @@ using Serilog;
 
 class Program
 {
-   public static void Main()
-   {
-
-       var logger = new LoggerConfiguration()
-           .WriteTo.File("../../../logs.txt")
-           .CreateLogger();
+    public static void Main()
+    {
+        var logger = new LoggerConfiguration()
+            .WriteTo.File("../../../logs.txt")
+            .CreateLogger();
 
         var chessBoardGenerator = new ChessBoardGenerator(logger);
         var inputValidation = new InputValidation(logger);
 
         var widthInput = ChessBoardDialog.EnterRectangleWidth();
 
-       var widthValidationResult = inputValidation.ValidateInput(widthInput);
+        var widthValidationResult = inputValidation.ValidateInput(widthInput);
         if (!widthValidationResult.IsValid)
         {
             Console.WriteLine(widthValidationResult.ErrorMessage);
@@ -26,21 +25,20 @@ class Program
 
         var lengthInput = ChessBoardDialog.EnterRectangleLength();
 
-       var lengthValidationResult = inputValidation.ValidateInput(lengthInput);
+        var lengthValidationResult = inputValidation.ValidateInput(lengthInput);
 
         if (!lengthValidationResult.IsValid)
         {
             Console.WriteLine(lengthValidationResult.ErrorMessage);
             return;
         }
+
         var length = int.Parse(lengthInput);
 
-        var generatedChessBoard = chessBoardGenerator.GenerateRectangeBoard(width, length);
+        var generatedChessBoard = chessBoardGenerator.GenerateRectangleBoard(width, length);
 
         ChessBoardDialog.RectangleMessage(width, length);
         Console.WriteLine(generatedChessBoard);
         Console.ReadLine();
-
-
     }
 }

@@ -1,11 +1,7 @@
-using Microsoft.Extensions.Logging;
-
 namespace ChessBoardApp.ChessBoard
 {
-
     public class ChessBoardDialog
     {
-
         public static string EnterRectangleWidth()
         {
             Console.Write("Please enter rectangle width: ");
@@ -31,7 +27,5 @@ namespace ChessBoardApp.ChessBoard
                 $"Rectangle board with your provided width {width} and length {length}"
             );
         }
-
-
     }
 }

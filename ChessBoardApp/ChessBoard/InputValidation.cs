@@ -2,8 +2,6 @@ using Serilog;
 
 namespace ChessBoardApp.ChessBoard
 {
-
-
     public class InputValidation
     {
         private readonly ILogger _logger;
@@ -12,18 +10,28 @@ namespace ChessBoardApp.ChessBoard
         {
             _logger = logger;
         }
+
         public class ValidationResult
         {
             public bool IsValid { get; set; }
-            public string ErrorMessage { get; set; }
+            public string? ErrorMessage { get; set; }
 
-            public ValidationResult(bool isValid, string errorMessage)
+            private ValidationResult(bool isValid, string errorMessage)
             {
                 IsValid = isValid;
                 ErrorMessage = errorMessage;
             }
-        }
 
+            public static ValidationResult Success()
+            {
+                return new ValidationResult(true, null);
+            }
+
+            public static ValidationResult Failure(string errorMessage)
+            {
+                return new ValidationResult(false, errorMessage);
+            }
+        }
 
         public ValidationResult ValidateInput(string input)
         {
@@ -33,10 +41,10 @@ namespace ChessBoardApp.ChessBoard
             {
                 string errorMessage = "Invalid input. An integer higher than 0 is required";
                 _logger.Error($"Invalid input '{input}'");
-                return new ValidationResult(false, errorMessage);
+                return ValidationResult.Failure(errorMessage);
             }
 
-            return new ValidationResult(true, null);
+            return ValidationResult.Success();
         }
     }
 }

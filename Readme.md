@@ -1,2 +1,2 @@
-cd ChessBoard.Api
+cd ChessBoard.Api\
 docker-compose up -d

@@ -42,13 +42,14 @@ namespace ChessBoard.Api.Controllers
             var chessBoardGenerator = new ChessBoardGenerator(logger);
 
             var inputValidation = new InputValidation(logger);
+
             var inputValidationResult = inputValidation.ValidateInput(input);
 
             if (inputValidationResult.IsValid)
             {
                 var chessBoardLength = int.Parse(input);
-                var generatedChessBoard = chessBoardGenerator.GenerateChessBoardOneLoop(chessBoardLength);
 
+                var generatedChessBoard = chessBoardGenerator.GenerateChessBoardOneLoop(chessBoardLength);
 
                 var newId = Guid.NewGuid().ToString();
 

@@ -1,18 +1,16 @@
-﻿using ChessBoardApp.ChessBoard;
-using Moq;
+﻿using Moq;
 using Serilog;
-
+using ChessBoard.Api.Services;
 namespace ChessBoard.UnitTests
 {
     public class ChessBoardGeneratorTests
     {
-        private readonly Mock<ILogger> loggerMock;
-        private readonly ChessBoardGenerator chessBoardGenerator;
+        private readonly ChessBoardGenerator _chessBoardGenerator;
 
         public ChessBoardGeneratorTests()
         {
-            loggerMock = new Mock<ILogger>();
-            chessBoardGenerator = new ChessBoardGenerator(loggerMock.Object);
+            Mock<ILogger> loggerMock = new();
+            _chessBoardGenerator = new ChessBoardGenerator(loggerMock.Object);
         }
 
         [Theory]
@@ -23,7 +21,7 @@ namespace ChessBoard.UnitTests
         public void GenerateRectangleBoard_ShouldReturnCorrectChessBoard(string expected, int width, int length)
         {
             // Act
-            var result = chessBoardGenerator.GenerateRectangleBoard(width, length);
+            var result = _chessBoardGenerator.GenerateRectangleBoard(width, length);
 
             // Assert
             Assert.Contains(expected, result);
@@ -37,7 +35,7 @@ namespace ChessBoard.UnitTests
         public void GenerateChessBoardOneLoop_ShouldReturnCorrectChessBoard(string expected, int input)
         {
             // Act
-            var result = chessBoardGenerator.GenerateChessBoardOneLoop(input);
+            var result = _chessBoardGenerator.GenerateChessBoardOneLoop(input);
 
             // Assert
             Assert.Contains(expected, result);
@@ -51,7 +49,7 @@ namespace ChessBoard.UnitTests
         public void GenerateChessBoardTwoLoops_ShouldReturnCorrectChessBoard(string expected, int input)
         {
             // Act
-            var result = chessBoardGenerator.GenerateChessBoardTwoLoops(input);
+            var result = _chessBoardGenerator.GenerateChessBoardTwoLoops(input);
 
             // Assert
             Assert.Contains(expected, result);

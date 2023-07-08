@@ -41,7 +41,7 @@ appsettings.Development.json
 
 *.ipr
 *.iws
-
+**logs
 # Test Results
 TestResults/
 [nN]ode[_-]?[mM]odules/

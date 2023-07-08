@@ -1,13 +1,12 @@
-using Serilog;
 using System.Text;
 
-namespace ChessBoardApp.ChessBoard
+namespace ChessBoard.Api.Services
 {
     public class ChessBoardGenerator
     {
-        private readonly ILogger _logger;
+        private readonly Serilog.ILogger _logger;
 
-        public ChessBoardGenerator(ILogger logger)
+        public ChessBoardGenerator(Serilog.ILogger logger)
         {
             _logger = logger;
         }

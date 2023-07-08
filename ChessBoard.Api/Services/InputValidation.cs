@@ -1,12 +1,10 @@
-using Serilog;
-
-namespace ChessBoardApp.ChessBoard
+namespace ChessBoard.Api.Services
 {
     public class InputValidation
     {
-        private readonly ILogger _logger;
+        private readonly Serilog.ILogger _logger;
 
-        public InputValidation(ILogger logger)
+        public InputValidation(Serilog.ILogger logger)
         {
             _logger = logger;
         }

@@ -1,0 +1,30 @@
+version: "3"
+services:
+  mongo:
+    image: mongo
+    container_name: mongo
+    ports:
+      - "27017:27017"
+    volumes:
+      - mongodbdata:/data/db
+    networks:
+      - chessboard-network
+
+  chessboard:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: chessboardapi:v1.0
+    container_name: chessboardapi
+    ports:
+      - "8080:80"
+    environment:
+      - MongoDbSettings:Host=mongo
+    networks:
+      - chessboard-network
+
+networks:
+  chessboard-network:
+
+volumes:
+  mongodbdata:

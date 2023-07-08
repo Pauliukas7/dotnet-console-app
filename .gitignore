@@ -15,8 +15,7 @@
 *.nuget.targets
 
 # Local development files
-appsettings.json
-appsettings.Development.json
+
 
 # Visual Studio files
 .vscode/

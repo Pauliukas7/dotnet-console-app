@@ -22,7 +22,7 @@ namespace ChessBoard.Api.Services
 
             public static ValidationResult Success()
             {
-                return new ValidationResult(true, null);
+                return new ValidationResult(true, null!);
             }
 
             public static ValidationResult Failure(string errorMessage)

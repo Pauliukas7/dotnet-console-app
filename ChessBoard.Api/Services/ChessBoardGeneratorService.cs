@@ -6,10 +6,10 @@ namespace ChessBoard.Api.Services
 {
     public class ChessBoardGeneratorService
     {
-        private Serilog.ILogger _logger;
-        private IChessBoardRepository _chessBoardRepository;
-        private InputValidation _inputValidation;
-        private string _input;
+        private readonly Serilog.ILogger _logger;
+        private readonly IChessBoardRepository _chessBoardRepository;
+        private readonly InputValidation _inputValidation;
+        private readonly string _input;
 
 
         public ChessBoardGeneratorService(InputValidation inputValidation, Serilog.ILogger logger,

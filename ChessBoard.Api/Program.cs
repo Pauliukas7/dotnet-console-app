@@ -17,7 +17,7 @@ namespace ChessBoard.Api
                 .GetSection(nameof(ServiceSettings))
                 .Get<ServiceSettings>();
 
-            services.AddSingleton(serviceProvider =>
+            services.AddScoped(serviceProvider =>
             {
                 var mongoDbSettings = builder.Configuration
                     .GetSection(nameof(MongoDbSettings))
@@ -26,7 +26,8 @@ namespace ChessBoard.Api
                 return mongoClient.GetDatabase(serviceSettings.ServiceName);
             });
 
-            services.AddSingleton<IChessBoardRepository, ChessBoardRepository>();
+            services.AddScoped<IChessBoardRepository, ChessBoardRepository>();
+
 
             builder.Services.AddControllers(options => { options.SuppressAsyncSuffixInActionNames = false; });
             // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle

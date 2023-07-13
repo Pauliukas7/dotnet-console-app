@@ -5,13 +5,13 @@ namespace ChessBoard.Api.Repositories
 {
     public class ChessBoardRepository : IChessBoardRepository
     {
-        private const string _collectionName = "chessboards";
+        private const string CollectionName = "chessboards";
         private readonly IMongoCollection<ChessBoardEntity> _dbCollection;
         private readonly FilterDefinitionBuilder<ChessBoardEntity> filterBuilder = Builders<ChessBoardEntity>.Filter;
 
         public ChessBoardRepository(IMongoDatabase database)
         {
-            _dbCollection = database.GetCollection<ChessBoardEntity>(_collectionName);
+            _dbCollection = database.GetCollection<ChessBoardEntity>(CollectionName);
         }
 
         public async Task<IReadOnlyCollection<ChessBoardEntity>> GetAllAsync()
@@ -23,7 +23,7 @@ namespace ChessBoard.Api.Repositories
         {
             FilterDefinition<ChessBoardEntity> filter = filterBuilder.Eq(entity => entity.Id, id);
 
-            return await _dbCollection.Find(filter).FirstOrDefaultAsync();
+            return await _dbCollection.Find(filter).SingleOrDefaultAsync();
         }
 
         public async Task CreateAsync(ChessBoardEntity chessBoard)

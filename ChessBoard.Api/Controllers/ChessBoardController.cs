@@ -39,30 +39,14 @@ namespace ChessBoard.Api.Controllers
         {
             var logger = new LoggerConfiguration().CreateLogger();
 
-            var chessBoardGenerator = new ChessBoardGenerator(logger);
-
             var inputValidation = new InputValidation(logger);
 
-            var inputValidationResult = inputValidation.ValidateInput(input);
+            var chessBoardGeneratorService =
+                new ChessBoardGeneratorService(inputValidation, logger, _chessBoardRepository, input);
+            var successfullyCreated = await chessBoardGeneratorService.Create();
 
-            if (inputValidationResult.IsValid)
-            {
-                var chessBoardLength = int.Parse(input);
+            return successfullyCreated ? Ok() : BadRequest();
 
-                var generatedChessBoard = chessBoardGenerator.GenerateChessBoardOneLoop(chessBoardLength);
-
-                var newId = Guid.NewGuid().ToString();
-
-                var newChessBoard = new ChessBoardEntity() { Id = newId, GeneratedChessBoard = generatedChessBoard };
-
-                await _chessBoardRepository.CreateAsync(newChessBoard);
-
-                return CreatedAtAction(nameof(GetChessboard), new { id = newId }, newChessBoard);
-            }
-            else
-            {
-                return BadRequest(inputValidationResult.ErrorMessage);
-            }
         }
     }
 }

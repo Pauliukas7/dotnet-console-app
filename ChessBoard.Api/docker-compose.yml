@@ -9,6 +9,7 @@ services:
       - mongodbdata:/data/db
     networks:
       - chessboard-network
+    restart: unless-stopped
 
   chessboard:
     build:
@@ -20,8 +21,11 @@ services:
       - "8080:80"
     environment:
       - MongoDbSettings:Host=mongo
+    depends_on:
+      - mongo
     networks:
       - chessboard-network
+    restart: unless-stopped
 
 networks:
   chessboard-network:

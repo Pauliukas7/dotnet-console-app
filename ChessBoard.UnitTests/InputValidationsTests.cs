@@ -1,7 +1,6 @@
-﻿using ChessBoardApp.ChessBoard;
-using Moq;
+﻿using Moq;
 using Serilog;
-
+using ChessBoard.Api.Services;
 namespace ChessBoard.UnitTests
 {
     public class InputValidationTests

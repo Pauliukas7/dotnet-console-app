@@ -15,8 +15,7 @@
 *.nuget.targets
 
 # Local development files
-appsettings.json
-appsettings.Development.json
+
 
 # Visual Studio files
 .vscode/
@@ -41,7 +40,7 @@ appsettings.Development.json
 
 *.ipr
 *.iws
-
+**logs
 # Test Results
 TestResults/
 [nN]ode[_-]?[mM]odules/
